@@ -1,0 +1,29 @@
+FUNCTION def_product(v1,v2: ARRAY_OF FLOAT) : FLOAT
+VAR
+    m,n,i:INTEGER;
+BEGIN
+    n:=v1.length-1
+    m:=v2.length-1
+    IF (n <> m) THEN
+            return 0;
+        ELSE
+        FOR i FROM 0 TO n STEP 1  DO
+            ps:=ps + v1[i]*v2[i];
+        END_FOR
+        END_IF
+    RETURN ps ;
+END
+ALGORITHM Dot_product
+VAR
+    v :ARRAY_OF ARRAY;
+    i,j,ps:INTEGER;
+BEGIN
+    FOR i FROM 0 TO v.length-1 STEP 1  DO
+        FOR j FROM i+1 TO v.length-2 STEP 1  DO
+            ps=def_product(v[i],v[j])
+            IF (ps=0) THEN
+                Write(v[i],  "and" , v[j], "are orthogonal")
+            END_IF
+        END_FOR
+    END_FOR
+END
